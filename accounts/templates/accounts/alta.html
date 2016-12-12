@@ -1,0 +1,14 @@
+{%extends 'base.html'%}
+
+{%block content%}
+
+
+<div class="row col s12 center">
+<form class="row col s12 center" action="." method="post">
+	{%csrf_token%}
+	{{form.as_p}}
+	<input class="waves-effect waves-light btn" type="submit" name="Darme de Alta">
+</form>
+</div>
+
+{%endblock content%}

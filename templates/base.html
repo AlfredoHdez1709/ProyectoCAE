@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+    <meta charset="UTF-8">
+    <title>CAE</title>
+</head>
+<body>
+
+
+<nav class="blue-grey" role="navigation" >
+    <div class="nav-wrapper container">
+      <a href="/" class="brand-logo">CAE</a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+
+        {%if request.user.is_authenticated%}
+        <li><a href="/">Inicio</a></li>
+        <li><a href="{%url 'lista'%}">Blog</a></li>
+        <li><a target="_blank" href="http://www.upp.edu.mx/front/">UPP</a></li>
+        <li><a href="{%url 'profile'%}">Panel</a></li>
+        <li><a href="{%url 'nuevo'%}" class="waves-effect waves-light btn">Publicar en el calendario</a></li>
+        <li><a href="{%url 'logout'%}?next=/">Cerrar Sesion</a></li>
+        
+        {%else%}
+        <li><a href="/">Inicio</a></li>
+        <li><a href="{%url 'lista'%}">Blog</a></li>
+        <li><a target="_blank" href="http://www.upp.edu.mx/front/">UPP</a></li>
+        <li><a  href="{%url 'login'%}">Iniciar Sesion</a></li>
+        {%endif%}
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+        {%if request.user.is_authenticated%}
+        <<li><a href="/">Inicio</a></li>
+        <li><a href="{%url 'lista'%}">Blog</a></li>
+        <li><a target="_blank" href="http://www.upp.edu.mx/front/">UPP</a></li>
+        <li><a href="{%url 'profile'%}">Panel</a></li>
+        <li><a href="{%url 'nuevo'%}" class="waves-effect waves-light btn">Publicar en el calendario</a></li>
+        <li><a href="{%url 'logout'%}?next=/">Cerrar Sesion</a></li>
+        
+        {%else%}
+        <li><a href="/">Inicio</a></li>
+        <li><a href="{%url 'lista'%}">Blog</a></li>
+        <li><a target="_blank" href="http://www.upp.edu.mx/front/">UPP</a></li>
+        <li><a  href="{%url 'login'%}">Iniciar Sesion</a></li>
+        {%endif%}
+      </ul>
+    </div>
+</nav>
+    {%block content%}
+    {%endblock content%}
+
+ <footer class="page-footer blue-grey">
+    <div class="container">
+      <div class="row center">
+          <p class="grey-text text-lighten-4">Copyright © 2016 Universidad Politécnica de Pachuca, Carretera Pachuca - Cd. Sahagún km 20 Ex-Hacienda de Santa Bárbara Zempoala Hidalgo, México. CP-43830 Tel 01 (771) 54 77 510</p>
+      </div>
+    </div>
+    <div class="footer-copyright center">
+      <div class="container">
+      Desarrollado por: <a class="brown-text text-lighten-3" target="_blank" href="http://alfredohernandez.tk/">AHRSOFT</a>
+      </div>
+    </div>
+  </footer>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+    <script>
+           $(document).ready(function(){
+             $('.parallax').parallax();
+            $(".button-collapse").sideNav();
+            $('.carousel.carousel-slider').carousel({full_width: true});
+            $('.collapsible').collapsible();
+       });
+      </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{%block content%}
+
+{%if categoria%}
+
+{%else%}
+	<h2>Enlistamos todos los posts</h2>
+{%endif%}
+		{%for post in posts%}
+		<a href="{{post.get_absolute_url}}">
+			<h3>{{post.titulo}}</h3>
+		</a>
+		<ul>
+			{%for cat in post.categorias.all%}
+			<a href="{%url 'categoria' cat.nombre%}">
+			<li>{{cat.nombre}}</li>
+			</a>
+			{%empty%}
+			<li>No hay categorias</li>
+			{%endfor%}
+		</ul>
+			<p>{{post.cuerpo | truncatewords:30}}</p>
+			<span>{{post.fecha}}</span>
+
+		{%empty%}
+		<h1>Aun sin publicaciones</h1>
+		{%endfor%}
+}
+}
+
+{%endblock content%}
