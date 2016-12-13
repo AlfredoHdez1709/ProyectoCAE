@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
+from .models import RegistroClie
 
 class RegistrationForm(forms.ModelForm):
 	password = forms.CharField(label='Tu password nuevo', widget=forms.PasswordInput)
@@ -13,3 +14,8 @@ class RegistrationForm(forms.ModelForm):
 		if cd['password'] != cd['password2']:
 			raise forms.ValidationError('Tus paswword no coinciden')
 		return cd['password2']
+
+class RegistrationDatos(forms.ModelForm):
+	class Meta:
+		model = RegistroClie
+		fields = ['nombre','apellido','matricula','media']

@@ -5,15 +5,27 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 
 from .forms import RegistrationForm
+from .forms import RegistrationDatos
 
 from .models import Perfil
+from .models import RegistroClie
 
 class PerfilView(View):
 	@method_decorator(login_required)
 	def get(self,request):
 		template_name = 'accounts/perfil.html'
-		context = {}
-		return render(request, template_name, context)
+		
+		compa = {
+		
+		}
+
+		return render(request,template_name,compa)
+
+
+
+
+
+
 
 class Alta(View):
 	def get(self,request):
@@ -40,3 +52,23 @@ class Alta(View):
 			}
 			template_name = 'accounts/alta.html'
 			return render(request,template_name,context)
+
+
+class AltaDatos(View):
+	@method_decorator(login_required)
+	def get (self, request):
+		template_name = 'accounts/alta_doc.html'
+		form = RegistrationDatos()
+		context = {
+			'form':form
+		}
+		return render(request,template_name,context)
+
+
+	def post(self,request):
+		form = RegistrationDatos(request.POST, request.FILES)
+		new_post = form.save(commit=False)
+		new_post.save()
+		return redirect('profile')
+		
+

@@ -8,4 +8,5 @@ urlpatterns = [
 	url(r'^login/$', djangoViews.login, name="login"),
 	url(r'^logout/$', djangoViews.logout, name="logout"),
 	url(r'^alta/$', views.Alta.as_view(), name="alta"),
+	url(r'^altadatos/$', views.AltaDatos.as_view(), name="altadatos"),
 ]

@@ -14,3 +14,10 @@ class Perfil(models.Model):
 
 	def __str__(self):
 		return 'este perfil es de: {}'.format(self.user)
+
+class RegistroClie(models.Model):
+	nombre = models.CharField(max_length=140, null= True, blank=True)
+	apellido = models.CharField(max_length=140, null= True, blank=True)
+	matricula = models.IntegerField(blank=True, null=True)
+	fecha = models.DateTimeField(auto_now=True)
+	media = models.FileField(upload_to='file' , blank=True, null=True)
